@@ -13,8 +13,14 @@ services:
 #      - 3001:3001
     environment:
       - NODE_ENV=production
-#    depends_on:
-#     - db-service
+    depends_on:
+      - db
+
+  db:
+      image: mongo
+      ports:
+        - 27017:27017
+      restart: always
 
   client-prod:
     build:

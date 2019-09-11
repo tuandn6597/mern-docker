@@ -11,21 +11,19 @@ mongoClient.connect('mongodb://db:27017', function (err, db) {
     const database = db.db('test')
 
     const collection = database.collection('dogs')
-    collection.find().toArray((err, items) => {
-    console.log(items)
+    collection.insertMany([{name: 'Togo'}, {name: 'Syd'}], (err, result) => {
+        console.log(result);
     })
+    
 });
-
-
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.get('/api/users', function(req, res) {
     res.json([
-        "Sally",
-        "Bernie",
-        "Robbie",
+        "Dặng Ngọc Tuấn",
+        "Nguyễn Trung Nghĩa"
     ]);
 });
 
