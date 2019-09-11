@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const PORT = 3001;
 var mongoClient = require('mongodb').MongoClient;
-mongoClient.connect('mongodb://db:27017', function (err, db) {
+mongoClient.connect('mongodb://db:27017',{useNewUrlParser:true,useUnifiedTopology: true}, function (err, db) {
     //neu ket noi khong thanh cong thi in ra loi
     if (err) throw err;
     //neu thanh cong thi log ra thong bao
