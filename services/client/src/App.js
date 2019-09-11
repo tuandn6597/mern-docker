@@ -24,7 +24,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            DEMO MERN-DOCKER
+            demo mern-docker
           </p>
           {
             this.state.users.map((user,index) => (
