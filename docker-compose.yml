@@ -8,7 +8,6 @@ services:
       dockerfile: Dockerfile-dev
     volumes:
       - './services/node:/usr/src/app'
-      - '/usr/src/app/node_modules'
 #    ports:
 #      - 3001:3001
     environment:

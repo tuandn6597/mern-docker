@@ -1,32 +1,15 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const PORT = 3001;
-var mongoClient = require('mongodb').MongoClient;
-mongoClient.connect('mongodb://db:27017',{useNewUrlParser:true,useUnifiedTopology: true}, function (err, db) {
-    //neu ket noi khong thanh cong thi in ra loi
-    if (err) throw err;
-    //neu thanh cong thi log ra thong bao
-    console.log('Ket noi thanh cong');
-    const database = db.db('test')
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
+const PORT = 3001
+const cors = require('cors')
+require('dotenv').config()
+app.use(cors())
 
-    const collection = database.collection('dogs')
-    collection.insertMany([{name: 'Togo'}, {name: 'Syd'}], (err, result) => {
-        console.log(result);
-    })
-    
-});
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-
-app.get('/api/users', function(req, res) {
-    res.json([
-        "Dặng Ngọc Tuấn",
-        "Nguyễn Trung Nghĩa"
-    ]);
-});
-
-app.listen(PORT, function() {
-    console.log("Node Server running on PORT:" + PORT);
-});
+app.use('/api/users', require('./components/users/user.route'))
+// handle error
+app.use(require('./middlewares/err.middleware'))
+app.listen(PORT, () => console.log('server is running '))
