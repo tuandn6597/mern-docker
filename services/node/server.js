@@ -10,6 +10,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use('/api/users', require('./components/users/user.route'))
+app.use('/api/test', (req, res) => {
+    res.json({
+        test: 3
+    })
+})
 // handle error
 app.use(require('./middlewares/err.middleware'))
 app.listen(PORT, () => console.log('server is running '))

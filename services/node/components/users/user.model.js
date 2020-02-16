@@ -14,10 +14,6 @@ const users = [
   {
     username: 'Đặng Ngọc Tuấn',
     mssv: 16110239
-  },
-  {
-    username: 'Nguyễn Trung Nghĩa',
-    mssv: 16110168
   }
 ]
 // insert
